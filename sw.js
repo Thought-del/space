@@ -1,5 +1,5 @@
 const BASE_PATH = '/space';
-const CACHE_NAME = 'space-tourism-v2';
+const CACHE_NAME = 'space-tourism-v3';
 const urlsToCache = [
     `${BASE_PATH}/`,
     `${BASE_PATH}/index.html`,
@@ -22,13 +22,19 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', event => {
-    event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
+    event.waitUntil(
+        caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+    );
     self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
     event.waitUntil(
-        caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))))
+        caches.keys().then(keys => {
+            return Promise.all(
+                keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+            );
+        })
     );
     self.clients.claim();
 });
@@ -38,16 +44,18 @@ self.addEventListener('fetch', event => {
     if (url.origin !== location.origin) return;
     
     event.respondWith(
-        caches.match(event.request).then(cached => {
-            if (cached) return cached;
-            return fetch(event.request).then(response => {
-                const clone = response.clone();
-                caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-                return response;
+        fetch(event.request).then(response => {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then(cache => {
+                cache.put(event.request, clone);
             });
+            return response;
         }).catch(() => {
-            if (event.request.mode === 'navigate') return caches.match(`${BASE_PATH}/404.html`);
-            return new Response('Offline', { status: 404 });
+            return caches.match(event.request).then(cached => {
+                if (cached) return cached;
+                if (event.request.mode === 'navigate') return caches.match(`${BASE_PATH}/404.html`);
+                return new Response('Offline', { status: 404 });
+            });
         })
     );
 });
