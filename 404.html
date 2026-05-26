@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Space Tourism</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0B0D17 0%, #1A1B2F 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+        .container { text-align: center; padding: 2rem; }
+        .stars { font-size: 8rem; margin-bottom: 2rem; animation: float 3s ease-in-out infinite; }
+        h1 { font-size: 6rem; color: #FFF; letter-spacing: 0.5rem; margin-bottom: 1rem; }
+        p { color: #D0D6F9; font-size: 1.25rem; margin-bottom: 2rem; }
+        .back-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            color: #0B0D17;
+            text-decoration: none;
+            border-radius: 2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .back-link:hover { transform: scale(1.05); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch">
+        <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="switchLanguage('ru')">RU</button>
+    </div>
+    <div class="container">
+        <div class="stars">🚀🌍✨</div>
+        <h1 id="error-code">404</h1>
+        <p id="error-message">Houston, we have a problem. This page is lost in space.</p>
+        <a href="/" id="back-link" class="back-link">← Back to Earth</a>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                title: "404 - Space Tourism",
+                message: "Houston, we have a problem. This page is lost in space.",
+                button: "← Back to Earth"
+            },
+            ru: {
+                title: "404 - Космический туризм",
+                message: "Хьюстон, у нас проблема. Эта страница потерялась в космосе.",
+                button: "← Вернуться на Землю"
+            }
+        };
+
+        function getBrowserLang() {
+            const lang = navigator.language.split('-')[0];
+            return lang === 'ru' ? 'ru' : 'en';
+        }
+
+        function switchLanguage(lang) {
+            const t = translations[lang];
+            if (t) {
+                document.title = t.title;
+                document.getElementById('error-message').textContent = t.message;
+                document.getElementById('back-link').textContent = t.button;
+                localStorage.setItem('404_lang', lang);
+            }
+        }
+
+        const savedLang = localStorage.getItem('404_lang');
+        const defaultLang = savedLang || getBrowserLang();
+        switchLanguage(defaultLang);
+    </script>
+</body>
+</html>

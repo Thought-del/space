@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#0B0D17">
+    <meta name="google" content="notranslate">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="preload" href="assets/shared/logo.svg" as="image">
+
+    <title data-i18n="page_title">Space Tourism</title>
+
+    <link rel="stylesheet" href="css/dist/output.css">
+    <script type="module" defer src="js/main.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <header class="flex justify-between px-[clamp(1.5rem,4vw,5rem)] py-6 mb-7 md:py-4 md:mb-[clamp(5.5rem,6vw,10rem)] lg:py-12 relative z-10 before:hidden lg:before:block before:content-[''] before:h-px before:w-[44%] before:top-[50%] before:left-[8%] before:absolute before:bg-gray-400 before:z-3">
+        <a href="/" aria-hidden="true">
+            <img src="/assets/shared/logo.svg" width="40" height="40" class="w-[clamp(2.75rem,3vw,3.5rem)] h-[clamp(2.75rem,3vw,3.5rem)]" aria-hidden="true" loading="eager" decoding="sync" fetchpriority="high" alt="">
+        </a>
+
+        <div class="hidden md:flex absolute right-0 top-0 px-10 bg-indigo-950/30 pt-6 w-[70%] lg:top-8 lg:px-8 lg:w-[50%] lg:backdrop-blur-md">
+            <ul class="flex mx-auto gap-[clamp(2rem,4vw,3.5rem)]">
+                <li><button type="button" class="header-nav" data-page="home" aria-current="page"><span class="span-nav">00</span><span data-i18n="nav_home">home</span></button></li>
+                <li><button type="button" class="header-nav" data-page="destinations" aria-current="false"><span class="span-nav">01</span><span data-i18n="nav_destinations">destination</span></button></li>
+                <li><button type="button" class="header-nav" data-page="crew" aria-current="false"><span class="span-nav">02</span><span data-i18n="nav_crew">crew</span></button></li>
+                <li><button type="button" class="header-nav" data-page="technology" aria-current="false"><span class="span-nav">03</span><span data-i18n="nav_technology">technology</span></button></li>
+            </ul>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div class="flex gap-2 md:absolute right-4 top-26 lg:top-32">
+                <button data-lang="en" class="lang-btn" data-lang="en">EN</button>
+                <button data-lang="ru" class="lang-btn" data-lang="ru">RU</button>
+            </div>
+            <button type="button" class="md:hidden" data-open-menu data-i18n-aria="open_menu" aria-label="Open menu">
+                <svg width="24" height="21" viewBox="0 0 24 21" aria-hidden="true">
+                    <g fill="#D0D6F9" fill-rule="evenodd"><path d="M0 0h24v3H0zM0 9h24v3H0zM0 18h24v3H0z"/></g>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="absolute inset-0 size-full backdrop-blur-lg -translate-x-full transition-transform duration-500 ease-in-out z-20" data-menu aria-hidden="true">
+        <h2 class="sr-only" data-i18n="menu_label">Mobile menu navigation</h2>
+        <div class="flex justify-between pl-6 py-6 pr-7">
+            <svg width="40" height="40" viewBox="0 0 48 48">
+                <g fill="none" fill-rule="evenodd">
+                    <circle cx="24" cy="24" r="24" fill="#FFF"/>
+                    <path fill="#0B0D17" d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z"/>
+                </g>
+            </svg>
+            <button type="button" class="hover:rotate-360 transition-transform duration-1000 ease-in-out" data-close-menu data-i18n-aria="close_menu" aria-label="Close menu" aria-hidden="true">
+                <svg width="20" height="21" viewBox="0 0 20 21">
+                    <g fill="#D0D6F9" fill-rule="evenodd">
+                        <path d="M2.575.954l16.97 16.97-2.12 2.122L.455 3.076z"/><path d="M.454 17.925L17.424.955l2.122 2.12-16.97 16.97z"/>
+                    </g>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex flex-col gap-10 text-center text-4xl mt-20">
+            <li><button type="button" class="menu-nav" data-page="home" aria-current="page"><span data-i18n="nav_home">home</span></button></li>
+            <li><button type="button" class="menu-nav" data-page="destinations" aria-current="false"><span data-i18n="nav_destinations">destination</span></button></li>
+            <li><button type="button" class="menu-nav" data-page="crew" aria-current="false"><span data-i18n="nav_crew">crew</span></button></li>
+            <li><button type="button" class="menu-nav" data-page="technology" aria-current="false"><span data-i18n="nav_technology">technology</span></button></li>
+        </ul>
+    </div>
+
+    <main class="lg:px-12 flex flex-col 3xl:mx-auto 3xl:px-0 3xl:max-w-400" data-container aria-atomic="true" aria-live="polite">
+        <h1 class="sr-only" data-i18n="page_title">Space Tourism</h1>
+        <section id="home-section" class="flex flex-col gap-[clamp(2rem,15vh,12rem)] lg:flex-row lg:gap-0 lg:px-[clamp(1.5rem,4vw,5rem)] 2xl:px-0 lg:justify-between" aria-labelledby="home-title">
+            <div class="text-center px-[clamp(0.5rem,4vw,7.5rem)] lg:text-left lg:max-w-140 lg:px-0 2xl:max-w-200 lg:py-12">
+                <span class="uppercase text-[clamp(1rem,1.25vw,1.25rem)] font-normal tracking-widest text-gray-400 inline-block mb-[clamp(0.5rem,1vw,0.75rem)]" data-i18n="hero_subtitle">so, you want to travel to</span>
+                <h2 class="uppercase text-[clamp(5rem,6vw,8rem)] font-normal tracking-wider text-white mb-[clamp(0.25rem,1.5vw,1.5rem)]" id="home-title" data-i18n="hero_title">space</h2>
+                <p class="text-gray-400 text-[clamp(1rem,2vw,1.5rem)]" data-i18n="hero_description">Let's face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we'll give you a truly out of this world experience!</p>
+            </div>
+            <div class="text-center bg-white rounded-[50%] flex items-center justify-center w-[clamp(10rem,50vw,18rem)] h-[clamp(10rem,50vw,18rem)] mx-auto lg:mt-[clamp(4rem,4vw,7.5rem)] lg:mx-0">
+                <span class="uppercase text-xl font-normal tracking-[0.15em] inline-block md:text-3xl 3xl:text-4xl" data-i18n="hero_explore">explore</span>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
