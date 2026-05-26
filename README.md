@@ -1,6 +1,6 @@
 # 🚀 Space Tourism
 
-[![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub%20Pages-blue)](https://thought-del.github.io/space-tourism/)
+[![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub%20Pages-blue)](https://Thought-del.github.io/space-tourism/)
 [![PWA](https://img.shields.io/badge/PWA-Enabled-green)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
 [![Three.js](https://img.shields.io/badge/Three.js-r160-blue)](https://threejs.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-38B2AC)](https://tailwindcss.com/)
@@ -14,7 +14,7 @@
 
 Interactive PWA application for virtual space travel. Explore the Moon, Mars, Europa and Titan with stunning 3D graphics, smooth animations and full responsiveness.
 
-🔗 **Live Demo:** [https://thought-del.github.io/space/](https://thought-del.github.io/space/)
+🔗 **Live Demo:** [https://Thought-del.github.io/space/](https://Thought-del.github.io/space/)
 
 ### ✨ Features
 
@@ -67,7 +67,7 @@ space-tourism/
 
 ```bash
 # Clone repository
-git clone https://github.com/thought-del/space-tourism.git
+git clone https://github.com/Thought-del/space-tourism.git
 
 # Navigate to project
 cd space-tourism
@@ -107,7 +107,7 @@ On every push to `main` branch, the site is automatically built and deployed to 
 
 **Petr Romanyuk**  
 - Telegram: [@thought217](https://t.me/thought217)
-- GitHub: [thought-del](https://github.com/thought-del)
+- GitHub: [thought-del](https://github.com/Thought-del)
 
 ### 📄 License
 
@@ -119,7 +119,7 @@ MIT — free for personal and commercial use.
 
 Интерактивное PWA-приложение для виртуального путешествия по космосу. Исследуйте Луну, Марс, Европу и Титан с потрясающей 3D-графикой, плавными анимациями и полной адаптивностью.
 
-🔗 **Демо:** [https://thought-del.github.io/space/](https://thought-del.github.io/space/)
+🔗 **Демо:** [https://Thought-del.github.io/space/](https://Thought-del.github.io/space/)
 
 ### ✨ Возможности
 
@@ -172,7 +172,7 @@ space-tourism/
 
 ```bash
 # Клонировать репозиторий
-git clone https://github.com/thought-del/space-tourism.git
+git clone https://github.com/Thought-del/space-tourism.git
 
 # Перейти в папку проекта
 cd space-tourism
@@ -211,7 +211,7 @@ cd space-tourism
 ### 👨‍💻 Автор
 
 **Пётр Романюк**  
-- Telegram: [@thought217](https://t.me/thought217)
+- Telegram: [@thought217](https://t.me/Thought217)
 - GitHub: [thought-del](https://github.com/thought-del
 
 ### 📄 Лицензия
