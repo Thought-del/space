@@ -35,14 +35,14 @@ function updateActiveNavButtons(pageName) {
 
 async function loadData(lang = 'en') {
     try {
-        const res = await fetch(`${BASE_PATH}data/${lang}-data.json`);
+        const res = await fetch(`${BASE_PATH}/data/${lang}-data.json`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         currentData = await res.json();
     } catch (error) {
         console.error('Ошибка загрузки данных:', error);
         showError(t('error_loading_data'));
         if (lang !== 'en') {
-            const fallback = await fetch(`${BASE_PATH}data/en-data.json`);
+            const fallback = await fetch(`${BASE_PATH}/data/en-data.json`);
             currentData = await fallback.json();
         }
     }
@@ -76,9 +76,9 @@ export async function renderPage(pageName) {
 
     if (pageName === 'home') {
         setBackground(
-            `${BASE_PATH}assets/home/background-home-mobile.jpg`,
-            `${BASE_PATH}assets/home/background-home-tablet.jpg`,
-            `${BASE_PATH}assets/home/background-home-desktop.jpg`
+            `${BASE_PATH}/assets/home/background-home-mobile.jpg`,
+            `${BASE_PATH}/assets/home/background-home-tablet.jpg`,
+            `${BASE_PATH}/assets/home/background-home-desktop.jpg`
         );
 
         renderPageContent(`
@@ -101,9 +101,9 @@ export async function renderPage(pageName) {
 
     if (pageName === 'destinations') {
         setBackground(
-            `${BASE_PATH}assets/destination/background-destination-mobile.jpg`,
-            `${BASE_PATH}assets/destination/background-destination-tablet.jpg`,
-            `${BASE_PATH}assets/destination/background-destination-desktop.jpg`
+            `${BASE_PATH}/assets/destination/background-destination-mobile.jpg`,
+            `${BASE_PATH}/assets/destination/background-destination-tablet.jpg`,
+            `${BASE_PATH}/assets/destination/background-destination-desktop.jpg`
         );
         
         renderPageContent(`
@@ -139,7 +139,7 @@ export async function renderPage(pageName) {
         `, 'destinations');
 
         setTimeout(() => {
-            if (is3D) initPlanet('planet-container', `${BASE_PATH}assets/destination/8k_moon.jpg`);
+            if (is3D) initPlanet('planet-container', `${BASE_PATH}/assets/destination/8k_moon.jpg`);
             initDestinationSlider(data, is3D);
         }, 100);
         return;
@@ -147,9 +147,9 @@ export async function renderPage(pageName) {
 
     if (pageName === 'crew') {
         setBackground(
-            `${BASE_PATH}assets/crew/background-crew-mobile.jpg`,
-            `${BASE_PATH}assets/crew/background-crew-tablet.jpg`,
-            `${BASE_PATH}assets/crew/background-crew-desktop.jpg`
+            `${BASE_PATH}/assets/crew/background-crew-mobile.jpg`,
+            `${BASE_PATH}/assets/crew/background-crew-tablet.jpg`,
+            `${BASE_PATH}/assets/crew/background-crew-desktop.jpg`
         );
         
         renderPageContent(`
@@ -189,7 +189,7 @@ export async function renderPage(pageName) {
     }
 
     if (pageName === 'technology') {
-            setBackground('assets/technology/background-technology-mobile.jpg', 'assets/technology/background-technology-tablet.jpg', 'assets/technology/background-technology-desktop.jpg');
+            setBackground(`${BASE_PATH}/assets/technology/background-technology-mobile.jpg`, `${BASE_PATH}/assets/technology/background-technology-tablet.jpg`, `${BASE_PATH}/assets/technology/background-technology-desktop.jpg`);
             renderPageContent(`
                 <h1 class="sr-only">${t('page_title')}</h1>
                 <section aria-labelledby="technology-title" aria-live="polite" aria-atomic="true">

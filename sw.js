@@ -1,23 +1,24 @@
+const BASE_PATH = '/space';
 const CACHE_NAME = 'space-tourism-v2';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/404.html',
-    '/css/dist/output.css',
-    '/js/main.js',
-    '/js/moduls/constantins.js',
-    '/js/moduls/menu.js',
-    '/js/moduls/renderContent.js',
-    '/js/moduls/sliders.js',
-    '/js/moduls/translate.js',
-    '/js/moduls/planet-3d.js',
-    '/js/moduls/utils.js',
-    '/data/en-data.json',
-    '/data/ru-data.json',
-    '/data/locales/en.json',
-    '/data/locales/ru.json',
-    '/assets/shared/logo.svg',
-    '/assets/icons/favicon-32x32.png'
+    `${BASE_PATH}/`,
+    `${BASE_PATH}/index.html`,
+    `${BASE_PATH}/404.html`,
+    `${BASE_PATH}/css/dist/output.css`,
+    `${BASE_PATH}/js/main.js`,
+    `${BASE_PATH}/js/moduls/constantins.js`,
+    `${BASE_PATH}/js/moduls/menu.js`,
+    `${BASE_PATH}/js/moduls/renderContent.js`,
+    `${BASE_PATH}/js/moduls/sliders.js`,
+    `${BASE_PATH}/js/moduls/translate.js`,
+    `${BASE_PATH}/js/moduls/planet-3d.js`,
+    `${BASE_PATH}/js/moduls/utils.js`,
+    `${BASE_PATH}/data/en-data.json`,
+    `${BASE_PATH}/data/ru-data.json`,
+    `${BASE_PATH}/data/locales/en.json`,
+    `${BASE_PATH}/data/locales/ru.json`,
+    `${BASE_PATH}/assets/shared/logo.svg`,
+    `${BASE_PATH}/assets/icons/favicon-32x32.png`
 ];
 
 self.addEventListener('install', event => {
@@ -45,7 +46,7 @@ self.addEventListener('fetch', event => {
                 return response;
             });
         }).catch(() => {
-            if (event.request.mode === 'navigate') return caches.match('/404.html');
+            if (event.request.mode === 'navigate') return caches.match(`${BASE_PATH}/404.html`);
             return new Response('Offline', { status: 404 });
         })
     );

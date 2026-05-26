@@ -1,9 +1,11 @@
+import { BASE_PATH } from './constantins.js';
+
 let currentLang = 'en';
 let translations = {};
 const supportedLangs = ['en', 'ru'];
 
 async function loadTranslations(lang) {
-    const response = await fetch(`/data/locales/${lang}.json`);
+    const response = await fetch(`${BASE_PATH}/data/locales/${lang}.json`);
     translations = await response.json();
     currentLang = lang;
     document.documentElement.lang = lang;
