@@ -60,6 +60,7 @@ export function initPlanet(containerId, texturePath) {
     let isDragging = false, prevMouse = { x: 0, y: 0 }, rotSpeed = { x: 0, y: 0 };
     const autoSpeed = 0.002;
     
+    // МЫШЬ
     container.addEventListener('mousedown', e => { isDragging = true; prevMouse = { x: e.clientX, y: e.clientY }; });
     window.addEventListener('mouseup', () => isDragging = false);
     window.addEventListener('mousemove', e => {
@@ -68,6 +69,29 @@ export function initPlanet(containerId, texturePath) {
         rotSpeed.x = (e.clientY - prevMouse.y) * 0.01;
         prevMouse = { x: e.clientX, y: e.clientY };
     });
+    
+    container.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        isDragging = true;
+        const touch = e.touches[0];
+        prevMouse = { x: touch.clientX, y: touch.clientY };
+    }, { passive: false });
+    
+    container.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        if (!isDragging) return;
+        const touch = e.touches[0];
+        const deltaX = touch.clientX - prevMouse.x;
+        const deltaY = touch.clientY - prevMouse.y;
+        rotSpeed.y = deltaX * 0.01;
+        rotSpeed.x = deltaY * 0.01;
+        prevMouse = { x: touch.clientX, y: touch.clientY };
+    }, { passive: false });
+    
+    container.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+    
     container.addEventListener('wheel', e => { e.preventDefault(); camera.position.z += e.deltaY * 0.01; camera.position.z = Math.max(1.5, Math.min(5, camera.position.z)); });
     
     function animate() {
