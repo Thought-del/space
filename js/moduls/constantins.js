@@ -1,4 +1,4 @@
-const BASE_PATH = '';
+const BASE_PATH = '/space';
 const IS_DEV = false;
 
 const SELECTORS = {
